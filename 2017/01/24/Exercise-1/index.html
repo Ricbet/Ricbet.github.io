@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>网易2017秋招编程题集合+自己的结果 | RABBIT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="编程题" />
+  
+  
+  
+  
+  <meta name="description" content="前言周末利用无聊的时间见识了一下网易的秋招编程题也尝试用javascript来实现，总体的难度对我来说简直是变态-_-！，不过最后总算在自己的能力范围内解决了六道，其中有一道是参考了另一位大神的思路最终用代码实现，还有一道反正我怎么想也想不出来~~有兴趣的大神们可以尝试一下让我观摩观摩哈哈，下面放题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网易2017秋招编程题集合+自己的结果">
+<meta property="og:url" content="http://yoursite.com/2017/01/24/Exercise-1/index.html">
+<meta property="og:site_name" content="RABBIT">
+<meta property="og:description" content="前言周末利用无聊的时间见识了一下网易的秋招编程题也尝试用javascript来实现，总体的难度对我来说简直是变态-_-！，不过最后总算在自己的能力范围内解决了六道，其中有一道是参考了另一位大神的思路最终用代码实现，还有一道反正我怎么想也想不出来~~有兴趣的大神们可以尝试一下让我观摩观摩哈哈，下面放题">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/250/014/2500146474-58456d7d3022e_articlex">
+<meta property="og:updated_time" content="2017-01-28T05:06:22.121Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网易2017秋招编程题集合+自己的结果">
+<meta name="twitter:description" content="前言周末利用无聊的时间见识了一下网易的秋招编程题也尝试用javascript来实现，总体的难度对我来说简直是变态-_-！，不过最后总算在自己的能力范围内解决了六道，其中有一道是参考了另一位大神的思路最终用代码实现，还有一道反正我怎么想也想不出来~~有兴趣的大神们可以尝试一下让我观摩观摩哈哈，下面放题">
+<meta name="twitter:image" content="https://sfault-image.b0.upaiyun.com/250/014/2500146474-58456d7d3022e_articlex">
+  
+    <link rel="alternate" href="/atom.xml" title="RABBIT" type="application/atom+xml">
+  
+  <link rel="icon" href="/http://wx3.sinaimg.cn/mw690/6eaf5cdagy1fc6p5011w1j2060060glt.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" ><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="RABBIT" rel="home"> RABBIT </a>
+            
+          </h1>
+
+          
+            <div class="site-description">找不到对象就new一个呗</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/#">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">文章</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于我</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Exercise-1" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      网易2017秋招编程题集合+自己的结果
+    </h1>
+  
+
+      </header> 
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/24/Exercise-1/" class="article-date">
+	  <time datetime="2017-01-24T09:58:41.000Z" itemprop="datePublished">一月 24, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>周末利用无聊的时间见识了一下网易的秋招编程题也尝试用javascript来实现，总体的难度对我来说简直是变态-_-！，不过最后总算在自己的能力范围内解决了六道，其中有一道是参考了另一位大神的思路最终用代码实现，还有一道反正我怎么想也想不出来~~有兴趣的大神们可以尝试一下让我观摩观摩哈哈，下面放题<br><a id="more"></a></p>
+<h2 id="1-回文序列"><a href="#1-回文序列" class="headerlink" title="1.回文序列"></a>1.回文序列</h2><p><strong>题目：</strong></p>
+<blockquote>
+<p>如果一个数字序列逆置之后跟原序列是一样的就称这样的数字序列为回文序列。例如：<br>{1, 2, 1}, {15, 78, 78, 15} , {112} 是回文序列,<br>{1, 2, 2}, {15, 78, 87, 51} ,{112, 2, 11} 不是回文序列。<br>现在给出一个数字序列，允许使用一种转换操作：<br>选择任意两个相邻的数，然后从序列移除这两个数，并用这两个数字的和插入到这两个数之前的位置(只插入一个和)。<br>现在对于所给序列要求出最少需要多少次操作可以将其变成回文序列。</p>
+</blockquote>
+<p><strong>输入例子：</strong></p>
+<blockquote>
+<p>[1,1,1,3]</p>
+</blockquote>
+<p><strong>输出例子：</strong></p>
+<blockquote>
+<p>2</p>
+</blockquote>
+<p><strong>我的思路：</strong></p>
+<blockquote>
+<p>首先清楚了回文序列的定义之后我可以用输入的数组的字符串以及该数组倒序后的字符串进行比较，以此来作为是否是回文序列的判断，后观察发现若需要最少操作来实现回文序列则必须使数字较小的数据来与后一个数据相加，举输入例子来说，数组第一位和最后一位的数字是1比3小，那么我在相加的时候就得拿1和后面的数字相加才能尽可能的与末尾的3相等。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> result = <span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> revArr = arr.slice(<span class="number">0</span>).reverse();</div><div class="line">	<span class="keyword">if</span>(revArr.join(<span class="string">""</span>)==arr.join(<span class="string">""</span>))&#123;</div><div class="line">		<span class="keyword">return</span> result</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (revArr[<span class="number">0</span>]==arr[<span class="number">0</span>]) &#123;</div><div class="line">		arr.shift();</div><div class="line">		arr.pop()</div><div class="line">		<span class="keyword">return</span> fn(arr)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> &#123;</div><div class="line">		revArr.splice(<span class="number">0</span>,<span class="number">2</span>,revArr[<span class="number">0</span>]+revArr[<span class="number">1</span>])</div><div class="line">		arr.splice(<span class="number">0</span>,<span class="number">2</span>,arr[<span class="number">0</span>]+arr[<span class="number">1</span>])</div><div class="line">		arr[<span class="number">0</span>]&gt;revArr[<span class="number">0</span>]?fn(revArr):fn(arr);</div><div class="line">		<span class="keyword">return</span> ++result</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>]</div><div class="line"><span class="built_in">console</span>.log(fn(arr))</div></pre></td></tr></table></figure>
+<h2 id="2-优雅的点"><a href="#2-优雅的点" class="headerlink" title="2.优雅的点"></a>2.优雅的点</h2><p><strong>题目：</strong></p>
+<blockquote>
+<p>小易有一个圆心在坐标原点的圆，小易知道圆的半径的平方。<br>小易认为在圆上的点而且横纵坐标都是整数的点是优雅的，<br>小易现在想寻找一个算法计算出优雅的点的个数，请你来帮帮他。<br>例如：半径的平方如果为25<br>优雅的点就有：(+/-3, +/-4), (+/-4, +/-3), (0, +/-5) (+/-5, 0)，一共12个点。<br>输出为一个整数，即为优雅的点的个数</p>
+</blockquote>
+<p><strong>输入例子：</strong></p>
+<blockquote>
+<p>25</p>
+</blockquote>
+<p><strong>输出例子：</strong></p>
+<blockquote>
+<p>12</p>
+</blockquote>
+<p><strong>我的思路：</strong></p>
+<blockquote>
+<p>这题我在审题的时候误把园内的点也算在内了，其实只是要求在圆上的点既可，该题有点像数学里的勾股定理，同理，我在做判断的时候就是用半径的平方减去遍历的每一个坐标点的横坐标的平方的结果再进行一个开方，然后判断该数是否为整数，又因为该圆的圆心是坐标原点，那么符合条件的每一个坐标点都有4个方向，同时又要注意是否有坐标为0的情况，若有则减去4(例如：（0，+-5）和（+-5，0）)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">Powr</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> sum = [];</div><div class="line">	<span class="keyword">var</span> less = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(<span class="keyword">typeof</span> Powr == <span class="string">"number"</span>)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="built_in">Math</span>.sqrt(Powr);i++)&#123;</div><div class="line">			<span class="keyword">var</span> coordinate = <span class="built_in">Math</span>.sqrt(Powr-<span class="built_in">Math</span>.pow(i,<span class="number">2</span>))</div><div class="line">			<span class="keyword">if</span>(coordinate.toString().split(<span class="string">"."</span>)[<span class="number">1</span>]==<span class="literal">undefined</span>)&#123; <span class="comment">//验证开方后是否为整数</span></div><div class="line">				<span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</div><div class="line">					less=<span class="number">4</span>; <span class="comment">//验证是否存在有圆点的情况</span></div><div class="line">				&#125;</div><div class="line">				sum.push(&#123;i,coordinate&#125;)</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> sum.length*<span class="number">4</span>-less</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"请输入数字好吗"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Powr = <span class="number">25</span>;</div><div class="line"><span class="built_in">console</span>.log(fn(Powr))</div></pre></td></tr></table></figure>
+<h2 id="3-跳石板"><a href="#3-跳石板" class="headerlink" title="3.跳石板"></a>3.跳石板</h2><p><strong>题目：</strong></p>
+<blockquote>
+<p>小易来到了一条石板路前，每块石板上从1挨着编号为：1、2、3…….<br>这条石板路要根据特殊的规则才能前进：对于小易当前所在的编号为K的 石板，<br>小易单次只能往前跳K的一个约数(不含1和K)步，即跳到K+X(X为K的一个非1和本身的约数)的位置。<br>小易当前处在编号为N的石板，他想跳到编号恰好为M的石板去，小易想知道最少需要跳跃几次可以到达。<br>例如：<br>N = 4，M = 24：<br>4-&gt;6-&gt;8-&gt;12-&gt;18-&gt;24<br>于是小易最少需要跳跃5次，就可以从4号石板跳到24号石板 </p>
+</blockquote>
+<p><strong>输入例子：</strong></p>
+<blockquote>
+<p>4  24</p>
+</blockquote>
+<p><strong>输出例子：</strong></p>
+<blockquote>
+<p>5</p>
+</blockquote>
+<p><strong>我的思路：</strong></p>
+<blockquote>
+<p>这题。。。我能力有限，思路只想到用穷举这个方法了，所以大神们如果感兴趣的话可以提供一下思路啊哈哈哈~</p>
+</blockquote>
+<h2 id="4-暗黑的字符串"><a href="#4-暗黑的字符串" class="headerlink" title="4.暗黑的字符串"></a>4.暗黑的字符串</h2><p><strong>题目：</strong></p>
+<blockquote>
+<p>一个只包含’A’、’B’和’C’的字符串，<br>如果存在某一段长度为3的连续子串中恰好’A’、’B’和’C’各有一个，那么这个字符串就是纯净的，<br>否则这个字符串就是暗黑的。例如：<br>BAACAACCBAAA 连续子串”CBA”中包含了’A’,’B’,’C’各一个，所以是纯净的字符串<br>AABBCCAABB 不存在一个长度为2的连续子串包含’A’,’B’,’C’,所以是暗黑的字符串<br>你的任务就是计算出长度为n的字符串(只包含’A’、’B’和’C’)，有多少个是暗黑的字符串。</p>
+</blockquote>
+<p><strong>输入例子：</strong></p>
+<blockquote>
+<p>2,3</p>
+</blockquote>
+<p><strong>输出例子：</strong></p>
+<blockquote>
+<p>9,21</p>
+</blockquote>
+<p><strong>我的思路：</strong></p>
+<blockquote>
+<p>这题的话坦白讲考的并不是代码，而是数学！！一开始我想着就是用3的n次方减去纯净的字符串个数那么得出来的就是暗黑的字符串，但我看了下面这个图，我简直膜拜<br><img src="https://sfault-image.b0.upaiyun.com/250/014/2500146474-58456d7d3022e_articlex" alt="图片描述"></p>
+</blockquote>
+<p>具体的代码实现比较简单，关键还是思路以及MATH！！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">if</span>(num==<span class="number">1</span>)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">3</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(num==<span class="number">2</span>)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">9</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">2</span>*fn(num<span class="number">-1</span>)+fn(num<span class="number">-2</span>)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> num=<span class="number">3</span>;</div><div class="line"><span class="built_in">console</span>.log(fn(num))</div></pre></td></tr></table></figure>
+<h2 id="5-数字翻转"><a href="#5-数字翻转" class="headerlink" title="5.数字翻转"></a>5.数字翻转</h2><p><strong>题目：</strong></p>
+<blockquote>
+<p>对于一个整数X，定义操作rev(X)为将X按数位翻转过来，并且去除掉前导0。例如:<br>如果 X = 123，则rev(X) = 321;<br>如果 X = 100，则rev(X) = 1.<br>现在给出整数x和y,要求rev(rev(x) + rev(y))为多少？ </p>
+</blockquote>
+<p><strong>输入例子：</strong></p>
+<blockquote>
+<p>123,100</p>
+</blockquote>
+<p><strong>输出例子：</strong></p>
+<blockquote>
+<p>223</p>
+</blockquote>
+<p><strong>我的思路：</strong></p>
+<blockquote>
+<p>该题相对来说不算很难，整体的思路就是利用数组里的reverse,关键就是如何把数字的每一位转为对应的数组</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">rev</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> revArr = num.toString().split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</div><div class="line">	<span class="keyword">return</span> <span class="built_in">parseInt</span>(revArr)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> x = <span class="number">123</span>;</div><div class="line"><span class="keyword">var</span> y = <span class="number">100</span>;</div><div class="line"><span class="built_in">console</span>.log(rev(rev(x) + rev(y)))</div></pre></td></tr></table></figure>
+<h2 id="6-最大的奇约数"><a href="#6-最大的奇约数" class="headerlink" title="6.最大的奇约数"></a>6.最大的奇约数</h2><p><strong>题目：</strong></p>
+<blockquote>
+<p>小易是一个数论爱好者，并且对于一个数的奇数约数十分感兴趣。<br>一天小易遇到这样一个问题： 定义函数f(x)为x最大的奇数约数，x为正整数。 例如:f(44) = 11.<br>现在给出一个N，需要求出 f(1) + f(2) + f(3)…….f(N)<br>例如： N = 7<br>f(1) + f(2) + f(3) + f(4) + f(5) + f(6) + f(7) = 1 + 1 + 3 + 1 + 5 + 3 + 7 = 21<br>小易计算这个问题遇到了困难，需要你来设计一个算法帮助他。 </p>
+</blockquote>
+<p><strong>输入例子：</strong></p>
+<blockquote>
+<p>7</p>
+</blockquote>
+<p><strong>输出例子：</strong></p>
+<blockquote>
+<p>21</p>
+</blockquote>
+<p><strong>我的思路：</strong></p>
+<blockquote>
+<p>该题的题意不难理解，明白的题意实现起来并不难，这里我用approximately函数来获取我输入的数字的所有约数，再经过判断获取最大的奇数约数从而实现，一开始我想到的是递归方法，不过。。能不用递归就不用递归对吧^ ^</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> sum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> j=num;j&gt;<span class="number">0</span>;j--)&#123;</div><div class="line">		<span class="keyword">var</span> apprNum = approximately(j);</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=apprNum.length<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</div><div class="line">			<span class="keyword">if</span>(apprNum[i]%<span class="number">2</span>)&#123;</div><div class="line">				sum += apprNum[i];</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> sum</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">approximately</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> result = []</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=num;i++)&#123;</div><div class="line">		<span class="keyword">if</span>(num%i==<span class="number">0</span>)&#123;</div><div class="line">			result.push(i)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(result.length&gt;<span class="number">0</span>)&#123;</div><div class="line">		<span class="keyword">return</span> result</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( fn(<span class="number">7</span>) )</div></pre></td></tr></table></figure>
+<h2 id="7-买苹果"><a href="#7-买苹果" class="headerlink" title="7.买苹果"></a>7.买苹果</h2><p><strong>题目：</strong></p>
+<blockquote>
+<p>小易去附近的商店买苹果，奸诈的商贩使用了捆绑交易，<br>只提供6个每袋和8个每袋的包装(包装不可拆分)。 可是小易现在只想购买恰好n个苹果，小易想购买尽量少的袋数方便携带。<br>如果不能购买恰好n个苹果，小易将不会购买。 </p>
+</blockquote>
+<p><strong>输入例子：</strong></p>
+<blockquote>
+<p>20</p>
+</blockquote>
+<p><strong>输出例子：</strong></p>
+<blockquote>
+<p>3</p>
+</blockquote>
+<p><strong>我的思路：</strong></p>
+<blockquote>
+<p>输出的结果只能是偶数，且每次包装袋子的时候都是尽量选择8个每袋包装的袋子，这样可以尽可能用最少的袋子来购买苹果，所以我列举了前几个比较特殊的选袋情况作为递归的判断条件（用一次递归嘿嘿），代码如下</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> freq = <span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(!(num%<span class="number">2</span>)&amp;&amp;num&gt;=<span class="number">12</span>)&#123;</div><div class="line">		<span class="keyword">if</span>(num==<span class="number">12</span>||num==<span class="number">14</span>||num==<span class="number">16</span>)&#123;</div><div class="line">			<span class="keyword">return</span> freq+=<span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(num==<span class="number">18</span>)&#123;</div><div class="line">			<span class="keyword">return</span> freq+=<span class="number">3</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			++freq</div><div class="line">			<span class="keyword">return</span> fn(num<span class="number">-8</span>)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fn(<span class="number">40</span>))</div></pre></td></tr></table></figure>
+<h2 id="8-计算糖果"><a href="#8-计算糖果" class="headerlink" title="8.计算糖果"></a>8.计算糖果</h2><p><strong>题目：</strong></p>
+<blockquote>
+<p>A,B,C三个人是好朋友,每个人手里都有一些糖果,我们不知道他们每个人手上具体有多少个糖果,但是我们知道以下的信息：<br>A - B, B - C, A + B, B + C. 这四个数值.每个字母代表每个人所拥有的糖果数.<br>现在需要通过这四个数值计算出每个人手里有多少个糖果,即A,B,C。这里保证最多只有一组整数A,B,C满足所有题设条件</p>
+</blockquote>
+<p><strong>输入例子：</strong></p>
+<blockquote>
+<p>1 -2 3 4</p>
+</blockquote>
+<p><strong>输出例子：</strong></p>
+<blockquote>
+<p>2 1 3</p>
+</blockquote>
+<p><strong>我的思路：</strong></p>
+<blockquote>
+<p>一开始我是比较笨的才用分别利用输入的例子的每一个对应关系来写式子从而一个一个遍历判断，但其实经过观察可以发现A-B和A+B这两种情况相加后得出来的结果是2A，依次类推，后面就迎刃而解了</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> A = (num[<span class="number">0</span>]+num[<span class="number">2</span>])/<span class="number">2</span>;</div><div class="line">	<span class="keyword">var</span> B = (num[<span class="number">1</span>]+num[<span class="number">3</span>])/<span class="number">2</span>;</div><div class="line">	<span class="keyword">if</span>(A.toString().split(<span class="string">"."</span>)[<span class="number">1</span>]==<span class="literal">undefined</span>&amp;&amp;B.toString().split(<span class="string">"."</span>)[<span class="number">1</span>]==<span class="literal">undefined</span>)&#123;</div><div class="line">		<span class="keyword">var</span> C = num[<span class="number">3</span>]-B;</div><div class="line">		<span class="keyword">return</span> A+<span class="string">" "</span>+B+<span class="string">" "</span>+C</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"No"</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> num = [<span class="number">1</span>,<span class="number">-2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line"><span class="built_in">console</span>.log(fn(num))</div></pre></td></tr></table></figure>
+<p>PS:有的题可能还有更好的解法，只是暂时还没想出来，主要就是那个跳石板怎么想都想不出来，希望有大神来帮忙解答哈哈^</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程题/">编程题</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/01/24/Exercise-1/" data-title="网易2017秋招编程题集合+自己的结果" data-url="http://yoursite.com/2017/01/24/Exercise-1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xxsxjh"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/24/Exercise-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          采用矩阵+深度优先算法解决迷宫问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/24/argument/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">JS函数里的arguments</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-回文序列"><span class="nav-number">2.</span> <span class="nav-text">1.回文序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-优雅的点"><span class="nav-number">3.</span> <span class="nav-text">2.优雅的点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-跳石板"><span class="nav-number">4.</span> <span class="nav-text">3.跳石板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-暗黑的字符串"><span class="nav-number">5.</span> <span class="nav-text">4.暗黑的字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-数字翻转"><span class="nav-number">6.</span> <span class="nav-text">5.数字翻转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-最大的奇约数"><span class="nav-number">7.</span> <span class="nav-text">6.最大的奇约数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-买苹果"><span class="nav-number">8.</span> <span class="nav-text">7.买苹果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-计算糖果"><span class="nav-number">9.</span> <span class="nav-text">8.计算糖果</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 RABBIT All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/#" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

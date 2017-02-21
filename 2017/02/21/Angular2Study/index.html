@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>ng2学前准备知识点 | RABBIT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Angular2" />
+  
+  
+  
+  
+  <meta name="description" content="最近入了ng2的坑，发现里面的东西还挺新，还是之前只听过没写过的知识点，各种在2016或2015才出来的新名词和热词都用上了，模块化、打包、函数式编程思想、前后端分离等等，而且ng2的语法像极了java，所以是纯前端的同学想上手ng2还是需要一点时间的，本人也是熬了一点苦头才摸清ng2的套路，基本还算是入门级别，但我会在下面罗列出学ng2之前必看的一些内容和知识点，也算是自我的检验。
+
+
+Ty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ng2学前准备知识点">
+<meta property="og:url" content="http://yoursite.com/2017/02/21/Angular2Study/index.html">
+<meta property="og:site_name" content="RABBIT">
+<meta property="og:description" content="最近入了ng2的坑，发现里面的东西还挺新，还是之前只听过没写过的知识点，各种在2016或2015才出来的新名词和热词都用上了，模块化、打包、函数式编程思想、前后端分离等等，而且ng2的语法像极了java，所以是纯前端的同学想上手ng2还是需要一点时间的，本人也是熬了一点苦头才摸清ng2的套路，基本还算是入门级别，但我会在下面罗列出学ng2之前必看的一些内容和知识点，也算是自我的检验。
+
+
+Ty">
+<meta property="og:updated_time" content="2017-02-21T14:45:43.915Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ng2学前准备知识点">
+<meta name="twitter:description" content="最近入了ng2的坑，发现里面的东西还挺新，还是之前只听过没写过的知识点，各种在2016或2015才出来的新名词和热词都用上了，模块化、打包、函数式编程思想、前后端分离等等，而且ng2的语法像极了java，所以是纯前端的同学想上手ng2还是需要一点时间的，本人也是熬了一点苦头才摸清ng2的套路，基本还算是入门级别，但我会在下面罗列出学ng2之前必看的一些内容和知识点，也算是自我的检验。
+
+
+Ty">
+  
+    <link rel="alternate" href="/atom.xml" title="RABBIT" type="application/atom+xml">
+  
+  <link rel="icon" href="/http://wx3.sinaimg.cn/mw690/6eaf5cdagy1fc6p5011w1j2060060glt.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" ><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="RABBIT" rel="home"> RABBIT </a>
+            
+          </h1>
+
+          
+            <div class="site-description">找不到对象就new一个呗</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/#">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">文章</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于我</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Angular2Study" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      ng2学前准备知识点
+    </h1>
+  
+
+      </header> 
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/02/21/Angular2Study/" class="article-date">
+	  <time datetime="2017-02-21T14:38:27.000Z" itemprop="datePublished">二月 21, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<blockquote>
+<p>最近入了ng2的坑，发现里面的东西还挺新，还是之前只听过没写过的知识点，各种在2016或2015才出来的新名词和热词都用上了，模块化、打包、函数式编程思想、前后端分离等等，而且ng2的语法像极了java，所以是纯前端的同学想上手ng2还是需要一点时间的，本人也是熬了一点苦头才摸清ng2的套路，基本还算是入门级别，但我会在下面罗列出学ng2之前必看的一些内容和知识点，也算是自我的检验。</p>
+</blockquote>
+<ol>
+<li>Typescript</li>
+<li>ES6</li>
+<li>Rxjs的Observable</li>
+<li>Node</li>
+<li>Webpack</li>
+</ol>
+<p>1和3算是我在入坑前遇到的知识盲点，相信看过angular2的官方文档的同学们在不知道typescript的情况很难弄清它在弄啥嘞</p>
+<a id="more"></a>
+<blockquote>
+<p>Typescript</p>
+</blockquote>
+<p>ng2的官方语言就是这个TS，基本上官方的文档里面所有的示例都是基于这个ts的，它仅仅只是微软出的一个JS的超集，让JS的语法强制类型化，基本上对JS掌握较深的同学入手ts基本不难。可以查看官方文档（<a href="https://www.tslang.cn/docs/tutorial.html）" target="_blank" rel="external">https://www.tslang.cn/docs/tutorial.html）</a></p>
+<blockquote>
+<p>ES6</p>
+</blockquote>
+<p>作为一枚前端狗，如果还不知道es6的话。。得赶紧补习了，在ng2里面也大量用到了箭头函数，…展开运算符，Promise对象等等等等，如果没有对es6的认识或者有点印象的话也是比较难熬的，大家可以查看阮一峰老师的ECMAscript6入门一书（<a href="http://es6.ruanyifeng.com/）" target="_blank" rel="external">http://es6.ruanyifeng.com/）</a></p>
+<blockquote>
+<p>Observable</p>
+</blockquote>
+<p>我记得我在看HTTP这一章节的时候，两个钟头都是一脸懵逼的神情。。因为ng2的http服务的请求返回的类型就是这个Observable(可观察对象)，它是Rxjs的其中一个方法，可以想象成它就是一个状态机，可以处理有限个数的状态当然也有可能处理无限个状态，提到这里可能有人会想到了Promise，没错，但是Promise只有pending、resolved、rejected三种状态，而Observable有可能就是N+3种状态，几乎可以说是Promise的增强版了，而且Promise的任何一种状态一旦触发就不能取消，就是说它一定会有一个返回结果，举一个实际可能会遇到的需求，比如要做一个搜索的输入框，当用户点击确定或者正在输入的过程当中不断的向服务器发送get请求，那么问题就在于当用户在1s之内快速的按下键盘的情况下就会一次性触发很多次请求，这肯定会很耗资源，这就是Promise的局限性，（虽然我还是喜欢用Promise,2333)，而如果采用Rxjs的Observable可观察对象那么就很轻松的完成这个需求，它能在用户发送请求的过程当中中断或取消上一次触发的请求状态，这在Promise中是很难做到的，关于更加具体的Observable大家可以查看中文翻译版本的文档( <a href="https://buctwbzs.gitbooks.io/rxjs/content/observable.html" target="_blank" rel="external">https://buctwbzs.gitbooks.io/rxjs/content/observable.html</a> ),当然这个Rxjs的理念还是非常难懂的，不过在ng2当中只要掌握好这个Observable即可，如果还是坚持喜欢用Promise的同学可以把它用.toPromise()转成Promise对象</p>
+<blockquote>
+<p>Node</p>
+</blockquote>
+<p>这里的所说的node其实只要你知道它是个啥就够了，知道如何启动一个服务，如何下载包管理器npm,懂得常见的指令就好了，因为现在谷歌团队正在beta这个ng2的脚手架工具angular-cli，想要用它还是得会node指令才行</p>
+<blockquote>
+<p>webpack</p>
+</blockquote>
+<p>一种模块管理和打包工具，你懂的</p>
+<hr>
+<p>下面是大漠老师的关于angular2的优质学习资源一手资料，哇咔咔，棒棒的，喜欢的同学可以经常看看<br>（<a href="https://my.oschina.net/mumu/blog/831790" target="_blank" rel="external">https://my.oschina.net/mumu/blog/831790</a>)</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular2/">Angular2</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/02/21/Angular2Study/" data-title="ng2学前准备知识点" data-url="http://yoursite.com/2017/02/21/Angular2Study/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xxsxjh"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/02/02/Dynamic-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">动态规划算法的思想及实现</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav">无</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 RABBIT All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/#" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

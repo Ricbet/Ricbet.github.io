@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>js函数里的arguments | RABBIT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="JavaScript" />
+  
+  
+  
+  
+  <meta name="description" content="arguments的面貌在javascript中所有的函数内部都包含了一个隐藏的变量叫arguments;它存放着所有传递到这个函数中的参数；那么我们打开实例看看arguments的输出形式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS函数里的arguments">
+<meta property="og:url" content="http://yoursite.com/2017/01/24/argument/index.html">
+<meta property="og:site_name" content="RABBIT">
+<meta property="og:description" content="arguments的面貌在javascript中所有的函数内部都包含了一个隐藏的变量叫arguments;它存放着所有传递到这个函数中的参数；那么我们打开实例看看arguments的输出形式">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/192/393/1923931067-58312cf299b94_articlex">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/210/220/2102204358-58312e74b3897_articlex">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/287/499/2874994866-58312feca8af0_articlex">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/239/043/2390438656-5831329ecf0d6_articlex">
+<meta property="og:updated_time" content="2017-01-27T08:07:57.154Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS函数里的arguments">
+<meta name="twitter:description" content="arguments的面貌在javascript中所有的函数内部都包含了一个隐藏的变量叫arguments;它存放着所有传递到这个函数中的参数；那么我们打开实例看看arguments的输出形式">
+<meta name="twitter:image" content="https://sfault-image.b0.upaiyun.com/192/393/1923931067-58312cf299b94_articlex">
+  
+    <link rel="alternate" href="/atom.xml" title="RABBIT" type="application/atom+xml">
+  
+  <link rel="icon" href="/http://wx3.sinaimg.cn/mw690/6eaf5cdagy1fc6p5011w1j2060060glt.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" ><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="RABBIT" rel="home"> RABBIT </a>
+            
+          </h1>
+
+          
+            <div class="site-description">找不到对象就new一个呗</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/#">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">文章</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于我</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-argument" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      JS函数里的arguments
+    </h1>
+  
+
+      </header> 
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/24/argument/" class="article-date">
+	  <time datetime="2017-01-24T09:40:16.000Z" itemprop="datePublished">一月 24, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="arguments的面貌"><a href="#arguments的面貌" class="headerlink" title="arguments的面貌"></a>arguments的面貌</h2><p>在javascript中所有的函数内部都包含了一个隐藏的变量叫<strong>arguments</strong>;<br>它存放着所有传递到这个函数中的参数；<br>那么我们打开实例看看arguments的输出形式</p>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</div><div class="line">&#125;)(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<p><img src="https://sfault-image.b0.upaiyun.com/192/393/1923931067-58312cf299b94_articlex" alt="图片描述"></p>
+<p>结果好像是类似数组的形式打印在控制台，相信大多数人包括我看到这种输出就会认为arguments是一个数组，那么既然是数组就可以用数组的一些方法了吧，再看下一个例子；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">arguments</span>.push(<span class="number">5</span>)</div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</div><div class="line">&#125;)(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<p><img src="https://sfault-image.b0.upaiyun.com/210/220/2102204358-58312e74b3897_articlex" alt="图片描述"></p>
+<p>结果报错了- -！；（在项目中我就是踩到了这个坑）；<br>那我们就会有一个疑惑了，既然是数组为什么不能用push方法呢，其他的像pop，slice也不行么，是的，都不行，虽然arguments也能通过下标的形式获取到对应位置的参数，当本质上不算是真正的数组；</p>
+<p>我们通过instanceof打印看看它是不是Array的孩子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span> <span class="keyword">instanceof</span> <span class="built_in">Array</span>)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p><img src="https://sfault-image.b0.upaiyun.com/287/499/2874994866-58312feca8af0_articlex" alt="图片描述"></p>
+<p>果不其然真不是数组，那么我们就会联想到它就是个<strong>对象</strong>了；<br>虽然它也能用for循环遍历到里面的参数，但把它转为真正的数组才是更好的选择；</p>
+<h2 id="转化为数组"><a href="#转化为数组" class="headerlink" title="转化为数组"></a>转化为数组</h2><p>转化的方法有很多，对象冒充的方式传递给Array.prototype或遍历push到空数组或传递给另一个函数等等。。都可以完成，下面简单介绍几个转化的方法，遍历push到空数组的方法就不细讲了；</p>
+<p><strong>一</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> arr = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</div><div class="line">	arr.push(<span class="number">5</span>)</div><div class="line">	<span class="built_in">console</span>.log(arr)</div><div class="line">&#125;)(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</div></pre></td></tr></table></figure></p>
+<p><img src="https://sfault-image.b0.upaiyun.com/239/043/2390438656-5831329ecf0d6_articlex" alt="图片描述"></p>
+<p>这种转化方式比较慢，在性能不好的情况下不推荐这种写法；</p>
+<p><strong>二</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    fnArr.apply(<span class="literal">null</span>, <span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnArr</span>(<span class="params">a,b,c,d</span>) </span>&#123;</div><div class="line">	···</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>个人推荐这种做法；</p>
+<p>总之方法很多，大家用自己习惯的就好；<br>第一次写文章，虽然写的不多，纯当练练手，只希望大家能在项目的过程当中不要误踩了arguments的坑，^ ^</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/01/24/argument/" data-title="JS函数里的arguments" data-url="http://yoursite.com/2017/01/24/argument/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xxsxjh"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/24/Exercise-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          网易2017秋招编程题集合+自己的结果
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#arguments的面貌"><span class="nav-number">1.</span> <span class="nav-text">arguments的面貌</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转化为数组"><span class="nav-number">2.</span> <span class="nav-text">转化为数组</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 RABBIT All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/#" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

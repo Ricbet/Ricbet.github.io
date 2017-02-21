@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>网易有道2017内推编程题2道 | RABBIT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="编程题Node" />
+  
+  
+  
+  
+  <meta name="description" content="前言其实本文的目的不全是这俩道题的解法上，而是加深对Node的基础模块readline的使用，先上题
+1.洗牌题目：
+
+洗牌在生活中十分常见，现在需要写一个程序模拟洗牌的过程。现在需要洗2n张牌，从上到下依次是第1张，第2张，第3张一直到第2n张。首先，我们把这2n张牌分成两堆，左手拿着第1张到第n张（上半堆），右手拿着第n+1张到第2n张（下半堆）。接着就开始洗牌的过程，先放下右手的最后一张牌，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网易有道2017内推编程题2道">
+<meta property="og:url" content="http://yoursite.com/2017/01/26/Exercise-3/index.html">
+<meta property="og:site_name" content="RABBIT">
+<meta property="og:description" content="前言其实本文的目的不全是这俩道题的解法上，而是加深对Node的基础模块readline的使用，先上题
+1.洗牌题目：
+
+洗牌在生活中十分常见，现在需要写一个程序模拟洗牌的过程。现在需要洗2n张牌，从上到下依次是第1张，第2张，第3张一直到第2n张。首先，我们把这2n张牌分成两堆，左手拿着第1张到第n张（上半堆），右手拿着第n+1张到第2n张（下半堆）。接着就开始洗牌的过程，先放下右手的最后一张牌，">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/201/651/2016517581-588a0b242a9b6_articlex">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/162/812/1628128278-588a0b40c9263_articlex">
+<meta property="og:updated_time" content="2017-01-29T12:06:16.605Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网易有道2017内推编程题2道">
+<meta name="twitter:description" content="前言其实本文的目的不全是这俩道题的解法上，而是加深对Node的基础模块readline的使用，先上题
+1.洗牌题目：
+
+洗牌在生活中十分常见，现在需要写一个程序模拟洗牌的过程。现在需要洗2n张牌，从上到下依次是第1张，第2张，第3张一直到第2n张。首先，我们把这2n张牌分成两堆，左手拿着第1张到第n张（上半堆），右手拿着第n+1张到第2n张（下半堆）。接着就开始洗牌的过程，先放下右手的最后一张牌，">
+<meta name="twitter:image" content="https://sfault-image.b0.upaiyun.com/201/651/2016517581-588a0b242a9b6_articlex">
+  
+    <link rel="alternate" href="/atom.xml" title="RABBIT" type="application/atom+xml">
+  
+  <link rel="icon" href="/http://wx3.sinaimg.cn/mw690/6eaf5cdagy1fc6p5011w1j2060060glt.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" ><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="RABBIT" rel="home"> RABBIT </a>
+            
+          </h1>
+
+          
+            <div class="site-description">找不到对象就new一个呗</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/#">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">文章</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于我</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Exercise-3" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      网易有道2017内推编程题2道
+    </h1>
+  
+
+      </header> 
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/26/Exercise-3/" class="article-date">
+	  <time datetime="2017-01-26T15:14:17.000Z" itemprop="datePublished">一月 26, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>其实本文的目的不全是这俩道题的解法上，而是加深对Node的基础模块readline的使用，先上题</p>
+<h2 id="1-洗牌"><a href="#1-洗牌" class="headerlink" title="1.洗牌"></a>1.洗牌</h2><p><strong>题目：</strong></p>
+<blockquote>
+<p>洗牌在生活中十分常见，现在需要写一个程序模拟洗牌的过程。<br>现在需要洗2n张牌，从上到下依次是第1张，第2张，第3张一直到第2n张。首先，我们把这2n张牌分成两堆，左手拿着第1张到第n张（上半堆），右手拿着第n+1张到第2n张（下半堆）。接着就开始洗牌的过程，先放下右手的最后一张牌，再放下左手的最后一张牌，接着放下右手的倒数第二张牌，再放下左手的倒数第二张牌，直到最后放下左手的第一张牌。接着把牌合并起来就可以了。<br>例如有6张牌，最开始牌的序列是1,2,3,4,5,6。首先分成两组，左手拿着1,2,3；右手拿着4,5,6。在洗牌过程中按顺序放下了6,3,5,2,4,1。把这六张牌再次合成一组牌之后，我们按照从上往下的顺序看这组牌，就变成了序列1,4,2,5,3,6。<br>现在给出一个原始牌组，请输出这副牌洗牌k次之后从上往下的序列。</p>
+</blockquote>
+<a id="more"></a>
+<p><strong>输入描述：</strong></p>
+<blockquote>
+<p>第一行一个数K(K ≤ 100)，表示洗牌次数。第二行输入最开始牌的序列（数字之间用空格隔开，且为2的倍数）</p>
+</blockquote>
+<p><strong>输出描述：</strong></p>
+<blockquote>
+<p>输出一行，显示最终的序列。数字之间用空格隔开，不要在行末输出多余的空格。</p>
+</blockquote>
+<p><strong>代码：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> readline = <span class="built_in">require</span>(<span class="string">'readline'</span>);<span class="comment">//引入readline模块</span></div><div class="line"><span class="keyword">const</span> rl = readline.createInterface(&#123;</div><div class="line">    <span class="attr">input</span>: process.stdin,</div><div class="line">    <span class="attr">output</span>: process.stdout,</div><div class="line">    <span class="attr">terminal</span>:<span class="literal">false</span></div><div class="line">&#125;);</div><div class="line"> </div><div class="line"><span class="keyword">var</span> bool = <span class="number">-1</span>;<span class="comment">// 初始状态为负数，表示还没开始读取</span></div><div class="line"><span class="keyword">var</span> ans = <span class="number">0</span>;</div><div class="line"><span class="keyword">var</span> sequence;</div><div class="line"><span class="keyword">var</span> result = [];</div><div class="line"></div><div class="line">rl.on(<span class="string">'line'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">line</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(bool&lt;<span class="number">0</span>)&#123;</div><div class="line">        bool = <span class="built_in">parseInt</span>(line.trim());</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        </div><div class="line">        sequence = line.split(<span class="string">" "</span>).map(<span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(index);</div><div class="line">        &#125;)</div><div class="line"></div><div class="line">        ans = sequence.length;</div><div class="line"></div><div class="line">        <span class="keyword">while</span>(bool!=<span class="number">0</span>)&#123;</div><div class="line"></div><div class="line">            <span class="keyword">var</span> LeftList = sequence.slice(<span class="number">0</span>,ans/<span class="number">2</span>).reverse();</div><div class="line">            <span class="keyword">var</span> RightList = sequence.slice(ans/<span class="number">2</span>,ans).reverse();</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;LeftList.length;i++)&#123;</div><div class="line">                result.push(RightList[i]);</div><div class="line">                result.push(LeftList[i]);</div><div class="line">            &#125;</div><div class="line">            result = result.reverse()</div><div class="line"></div><div class="line">            bool--;</div><div class="line">            sequence = result.slice(<span class="number">0</span>)</div><div class="line"></div><div class="line">            <span class="keyword">if</span>(bool==<span class="number">0</span>)&#123;</div><div class="line">                result.length = ans</div><div class="line">                <span class="built_in">console</span>.log(result.join(<span class="string">" "</span>))</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 重新初始化相关变量</span></div><div class="line">    <span class="keyword">if</span> (bool == <span class="number">0</span>) &#123;</div><div class="line">        bool = <span class="number">-1</span>;</div><div class="line">        ans = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>示例</strong></p>
+<p><img src="https://sfault-image.b0.upaiyun.com/201/651/2016517581-588a0b242a9b6_articlex" alt="图片描述"></p>
+<h2 id="2-构造队列"><a href="#2-构造队列" class="headerlink" title="2.构造队列"></a>2.构造队列</h2><p><strong>题目：</strong></p>
+<blockquote>
+<p>小明同学把1到n这n个数字按照一定的顺序放入了一个队列Q中。现在他对队列Q执行了如下程序：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(!Q.empty())              <span class="comment">//队列不空，执行循环</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> x=Q.front();            <span class="comment">//取出当前队头的值x</span></div><div class="line">    Q.pop();                 <span class="comment">//弹出当前队头</span></div><div class="line">    Q.push(x);               <span class="comment">//把x放入队尾</span></div><div class="line">    x = Q.front();              <span class="comment">//取出这时候队头的值</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,x);          <span class="comment">//输出x</span></div><div class="line">    Q.pop();                 <span class="comment">//弹出这时候的队头</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>做取出队头的值操作的时候，并不弹出当前队头。<br>小明同学发现，这段程序恰好按顺序输出了1,2,3,…,n。现在小明想让你构造出原始的队列，你能做到吗？</p>
+</blockquote>
+<p><strong>输入描述：</strong></p>
+<blockquote>
+<p>第一行一个整数T（T ≤ 100）表示数据组数，每组数据输入一个数n（1 ≤ n ≤ 100000），输入的所有n之和不超过200000。</p>
+</blockquote>
+<p><strong>输出描述：</strong></p>
+<blockquote>
+<p>对于每组数据，输出一行，表示原始的队列。数字之间用一个空格隔开，不要在行末输出多余的空格.</p>
+</blockquote>
+<p><strong>代码：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> readline = <span class="built_in">require</span>(<span class="string">'readline'</span>);</div><div class="line"><span class="keyword">const</span> rl = readline.createInterface(&#123;</div><div class="line">    <span class="attr">input</span>: process.stdin,</div><div class="line">    <span class="attr">output</span>: process.stdout,</div><div class="line">    <span class="attr">terminal</span>:<span class="literal">false</span></div><div class="line">&#125;);</div><div class="line"> </div><div class="line"><span class="keyword">var</span> bool = <span class="number">-1</span>;</div><div class="line"><span class="keyword">var</span> cur_line = <span class="number">0</span>;</div><div class="line"><span class="keyword">var</span> n;</div><div class="line"> </div><div class="line">rl.on(<span class="string">'line'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">line</span>)</span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(bool&lt;<span class="number">0</span>)&#123;</div><div class="line">        bool = <span class="built_in">parseInt</span>(line.trim());</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">    </div><div class="line">        n = <span class="built_in">parseInt</span>(line.trim());</div><div class="line">        cur_line++;</div><div class="line">        <span class="keyword">var</span> arr = [];</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=n;i&gt;<span class="number">0</span>;i--)&#123;</div><div class="line">            arr.unshift(i);</div><div class="line">            <span class="keyword">var</span> x = arr.pop();</div><div class="line">            arr.unshift(x);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">console</span>.log(arr.join(<span class="string">' '</span>));</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="keyword">if</span> (bool == cur_line) &#123;</div><div class="line">        bool = <span class="number">-1</span>;</div><div class="line">        cur_line = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>示例</strong></p>
+<p><img src="https://sfault-image.b0.upaiyun.com/162/812/1628128278-588a0b40c9263_articlex" alt="图片描述"></p>
+<h2 id="关于readline模块"><a href="#关于readline模块" class="headerlink" title="关于readline模块"></a>关于readline模块</h2><p>Readline是Node.js里实现标准输入输出的封装好的模块，通过这个模块我们可以以逐行的方式读取数据流,<br>而使用readline我们就得创建一个Interface对象，可以通过createInterface方法来创建，所以才有了上述代码<code>rl = readline.createInterface(options)</code><br>在这个方法中接收一个参数，参数是一个对象，对象的属性有如下</p>
+<ul>
+<li>input: 属性值为一个可以用来读取流数据的对象，用于指定读入数据的来源(必须);</li>
+<li>output: 属性值为一个可用来写入流数据的对象，用于指定数据的输出目标(必须);</li>
+<li>completer: 用于 Tab 自动补全的可选函数。(不常用);</li>
+<li>terminal: 如果希望 input 和 output 流像 TTY 一样对待，那么传递参数 true ，并且经由 ANSI/VT100 转码。 默认情况下检查 isTTY 是否在 output 流上实例化。(不常用)</li>
+</ul>
+<p>常见的传入参数如上述代码所示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> rl = readline.createInterface(&#123;</div><div class="line">    <span class="attr">input</span>: process.stdin,</div><div class="line">    <span class="attr">output</span>: process.stdout</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>process是node的一个全局进程，且是主线程，可自行百度</p>
+<p>完成参数的传入后便需要通过Interface对象的line事件来回调，在该事件的回调函数中同样需要使用一个参数，该参数的值为<strong>被读取的该行数据</strong></p>
+<p>通俗的讲就是说在这个函数里，你事先一开始传入了第一条数据，那么参数的值就是该条数据，然后在函数体里能够对该数据进行处理，当你完成数据的读取后，也就是你在键盘上按下了enter键，此时在写入一行数据，那么该参数就是你第二次写入的这条数据，同样的在函数体里你可以对该数据进行处理<br>如上述代码所示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rl.on(<span class="string">'line'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">line</span>)</span>&#123;</div><div class="line">    <span class="comment">//···</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>感兴趣的可以ctrlC+V体验一下</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程题/">编程题</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/01/26/Exercise-3/" data-title="网易有道2017内推编程题2道" data-url="http://yoursite.com/2017/01/26/Exercise-3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xxsxjh"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/31/Algorithm-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          魔法石的诱惑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/25/Bessel/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">贝塞尔曲线的数学原理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-洗牌"><span class="nav-number">2.</span> <span class="nav-text">1.洗牌</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-构造队列"><span class="nav-number">3.</span> <span class="nav-text">2.构造队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于readline模块"><span class="nav-number">4.</span> <span class="nav-text">关于readline模块</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 RABBIT All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/#" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

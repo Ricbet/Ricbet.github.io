@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>动态规划算法的思想及实现 | RABBIT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="算法Node" />
+  
+  
+  
+  
+  <meta name="description" content="介绍
+动态规划(简称DP)是算法设计思想当中最难也是最有趣的部分了，动态规划适用于有重叠子问题和最优子结构性质的问题，是一种在数学、计算机科学和经济学中经常使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。使用动态规划方法解题有较高的时间效率，关键在于它减少了很多不必要的计算和重复计算的部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划算法的思想及实现">
+<meta property="og:url" content="http://yoursite.com/2017/02/02/Dynamic-1/index.html">
+<meta property="og:site_name" content="RABBIT">
+<meta property="og:description" content="介绍
+动态规划(简称DP)是算法设计思想当中最难也是最有趣的部分了，动态规划适用于有重叠子问题和最优子结构性质的问题，是一种在数学、计算机科学和经济学中经常使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。使用动态规划方法解题有较高的时间效率，关键在于它减少了很多不必要的计算和重复计算的部分">
+<meta property="og:image" content="http://yoursite.com/../Dynamic-1/dp1.png">
+<meta property="og:updated_time" content="2017-02-08T10:07:48.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态规划算法的思想及实现">
+<meta name="twitter:description" content="介绍
+动态规划(简称DP)是算法设计思想当中最难也是最有趣的部分了，动态规划适用于有重叠子问题和最优子结构性质的问题，是一种在数学、计算机科学和经济学中经常使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。使用动态规划方法解题有较高的时间效率，关键在于它减少了很多不必要的计算和重复计算的部分">
+<meta name="twitter:image" content="http://yoursite.com/../Dynamic-1/dp1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="RABBIT" type="application/atom+xml">
+  
+  <link rel="icon" href="/http://wx3.sinaimg.cn/mw690/6eaf5cdagy1fc6p5011w1j2060060glt.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" ><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="RABBIT" rel="home"> RABBIT </a>
+            
+          </h1>
+
+          
+            <div class="site-description">找不到对象就new一个呗</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/#">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">文章</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于我</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Dynamic-1" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      动态规划算法的思想及实现
+    </h1>
+  
+
+      </header> 
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/02/02/Dynamic-1/" class="article-date">
+	  <time datetime="2017-02-02T12:12:02.000Z" itemprop="datePublished">二月 2, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
+<p>动态规划(简称DP)是算法设计思想当中最难也是最有趣的部分了，动态规划适用于有重叠子问题和最优子结构性质的问题，是一种在数学、计算机科学和经济学中经常使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。使用动态规划方法解题有较高的时间效率，关键在于它减少了很多不必要的计算和重复计算的部分</p>
+</blockquote>
+<a id="more"></a>
+<p>它的思想就是把一个大的问题进行<strong>拆分</strong>，细分成一个个小的子问题，且能够从这些小的子问题的解当中推导出原问题的解。同时还需要满足以下两个重要性质才能进行动态规划</p>
+<ul>
+<li><p>最优子结构性: 既所拆分的子问题的解是最优解。</p>
+</li>
+<li><p>子问题重叠性质: 既在求解的过程当中，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。动态规划算法正是利用了这种子问题的重叠性质，对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简单地查看一下结果，从而获得较高的解题效率</p>
+</li>
+</ul>
+<h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><blockquote>
+<p>首先先引一道动态规划的经典问题<strong>最长不下降子序列</strong><br>它的定义是: 设有由n个不相同的整数组成的数列b[n],若有下标$i_1&lt;i_2&lt;···&lt;i_L$ 且 $b[i_1]&lt;b[i_2]&lt;···&lt;b[i_L]$<br>则称存在一个长度为L的不下降序列。</p>
+</blockquote>
+<p><strong>例如</strong></p>
+<blockquote>
+<p>13,7,9,16,38,24,37,18,44,19,21,22,63,15</p>
+</blockquote>
+<p>那么就有13&lt;16&lt;38&lt;44&lt;63长度为5的不下降子序列。<br>但是经过观察实际上还有7&lt;9&lt;16&lt;18&lt;19&lt;21&lt;22&lt;63长度为8的不下降子序列，那么是否还有更长的不下降子序列呢？请找出最长的不下降子序列</p>
+<p><strong> 输入格式</strong></p>
+<blockquote>
+<p>第一行为n，表示n个数(n&lt;=100000),第二行为n个数的数值(数字之间用空格隔开且最后一个数字末尾不能留有空格)</p>
+</blockquote>
+<p><strong> 输出格式</strong></p>
+<blockquote>
+<p>一个整数，表示最长不下降子序列的长度。</p>
+</blockquote>
+<p><strong> 输入例子</strong></p>
+<blockquote>
+<p>4<br>1 3 1 2</p>
+</blockquote>
+<p><strong> 输出例子</strong></p>
+<blockquote>
+<p>2</p>
+</blockquote>
+<p><strong>思路</strong></p>
+<blockquote>
+<p>假如要求得某一段的最优，就要想更小段的最优怎么求，再看看由最小段的最优能否扩大推广到最大段的最优;</p>
+</blockquote>
+<p>假设这么一个表:</p>
+<p><table style="text-align: center"><tr><th>序列下标</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr><tr><th>序列数值</th><td>13</td><td>7</td><td>9</td><td>16</td><td>38</td><td>24</td><td>37</td><td>18</td><td>44</td><td>19</td><td>21</td><td>22</td><td>63</td><td>15</td></tr><tr><th>序列长度</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr><tr><th>链接位置</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table><br></p>
+<blockquote>
+<p>第三行表示该序列元素的所能连接的最长不下降子序列的长度，因为本身长度为1，所以初始值都为1.<br>第四行表示链接于哪个序列元素形成最长不下降子序列</p>
+</blockquote>
+<p>先从倒数第二项63算起，在它的后面仅有一项，因此仅作一次比较，因为63&gt;15，所以从63出发，不作任何链接，长度还是为1。</p>
+<p>再看倒数第三项22，在它的后面有2项，因此必须要在这2项当中找出比22大，长度又是最长的数值作为链接，由于只有22&lt;63,所以修改22的长度为2，即自身长度加上所链接数值的长度，并修改链接位置为13，也就是63的下标。</p>
+<p>再看倒数第四项21，在它的后面有3项，因此必须要在这3项当中找出比21大，长度又是最长的数值作为链接(注意:是长度)，很容易看出，数值22满足该条件，因此，修改21的长度为3，并修改链接位置为12，即22的序列下标。</p>
+<p>依次类推，最后结果如下表:</p>
+<p><table style="text-align: center"><tr><th>序列下标</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr><tr><th>序列数值</th><td>13</td><td>7</td><td>9</td><td>16</td><td>38</td><td>24</td><td>37</td><td>18</td><td>44</td><td>19</td><td>21</td><td>22</td><td>63</td><td>15</td></tr><tr><th>序列长度</th><td>7</td><td>8</td><td>7</td><td>6</td><td>3</td><td>4</td><td>3</td><td>5</td><td>2</td><td>4</td><td>3</td><td>2</td><td>1</td><td>1</td></tr><tr><th>链接位置</th><td>4</td><td>3</td><td>4</td><td>8</td><td>9</td><td>7</td><td>9</td><td>10</td><td>13</td><td>11</td><td>12</td><td>13</td><td>0</td><td>0</td></tr></table><br></p>
+<blockquote>
+<p>最终状态的转移方程式为: $f(i) = max {f(j)} +1 (b_j&lt;b_i 且 i&lt;j)$.时间复杂度为$O(n^2)$</p>
+</blockquote>
+<p><strong>代码</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">process.stdin.setEncoding(<span class="string">'utf8'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = [];</div><div class="line"><span class="keyword">var</span> bool = <span class="number">0</span>;</div><div class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</div><div class="line"><span class="keyword">var</span> longest = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> a = [];</div><div class="line"><span class="keyword">var</span> dp = [];</div><div class="line"></div><div class="line">process.stdin.on(<span class="string">'readable'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> chunk = process.stdin.read();</div><div class="line">  <span class="keyword">if</span> (chunk !== <span class="literal">null</span>) &#123;</div><div class="line">  	arr.push(chunk.trim())</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(bool&gt;=<span class="number">2</span>)&#123;</div><div class="line">  	n = arr[<span class="number">0</span>];</div><div class="line">  	process.stdin.emit(<span class="string">'end'</span>)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  bool++</div><div class="line"></div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">process.stdin.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">	a = arr.slice(<span class="number">1</span>).join(<span class="string">" "</span>).split(<span class="string">" "</span>).map(<span class="function"><span class="keyword">function</span>(<span class="params">index, elem</span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="built_in">parseInt</span>(index);</div><div class="line">	&#125;)</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i&lt;n;i++)&#123;</div><div class="line">		dp[i] = <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>;i&lt;n;i++)&#123;</div><div class="line"></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>;j&lt;i;j++)&#123;</div><div class="line">			<span class="keyword">if</span>(a[i]&gt;a[j])&#123;</div><div class="line">				dp[i] = <span class="built_in">Math</span>.max(dp[j]+<span class="number">1</span>,dp[i])</div><div class="line">			&#125;</div><div class="line">			longest = <span class="built_in">Math</span>.max(dp[i],longest)</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"最长长度为:"</span>+longest);</div><div class="line"></div><div class="line"></div><div class="line">  	process.stdout.write(<span class="string">'end'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><strong>示例</strong></p>
+<p> <img src="../Dynamic-1/dp1.png" alt="图片描述"></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/02/02/Dynamic-1/" data-title="动态规划算法的思想及实现" data-url="http://yoursite.com/2017/02/02/Dynamic-1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xxsxjh"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/21/Angular2Study/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          ng2学前准备知识点
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/01/Article-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">前端中经常出现的JS算法总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举个栗子"><span class="nav-number">2.</span> <span class="nav-text">举个栗子</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 RABBIT All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/#" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

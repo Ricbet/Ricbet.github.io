@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>折半查找法 | RABBIT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="算法" />
+  
+  
+  
+  
+  <meta name="description" content="题目：
+
+你是一名合格的图书管理员，你必须能够在一排(10000以内)已按编号大小排好序的图书中，快速地按照编号查找某本书所在的位置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="折半查找法">
+<meta property="og:url" content="http://yoursite.com/2017/01/31/Algorithm-1/index.html">
+<meta property="og:site_name" content="RABBIT">
+<meta property="og:description" content="题目：
+
+你是一名合格的图书管理员，你必须能够在一排(10000以内)已按编号大小排好序的图书中，快速地按照编号查找某本书所在的位置">
+<meta property="og:image" content="http://yoursite.com/../Algorithm-1/pic.png">
+<meta property="og:updated_time" content="2017-01-31T07:21:02.600Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="折半查找法">
+<meta name="twitter:description" content="题目：
+
+你是一名合格的图书管理员，你必须能够在一排(10000以内)已按编号大小排好序的图书中，快速地按照编号查找某本书所在的位置">
+<meta name="twitter:image" content="http://yoursite.com/../Algorithm-1/pic.png">
+  
+    <link rel="alternate" href="/atom.xml" title="RABBIT" type="application/atom+xml">
+  
+  <link rel="icon" href="/http://wx3.sinaimg.cn/mw690/6eaf5cdagy1fc6p5011w1j2060060glt.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" ><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="RABBIT" rel="home"> RABBIT </a>
+            
+          </h1>
+
+          
+            <div class="site-description">找不到对象就new一个呗</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/#">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">文章</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于我</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Algorithm-1" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      折半查找法
+    </h1>
+  
+
+      </header> 
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/31/Algorithm-1/" class="article-date">
+	  <time datetime="2017-01-30T19:12:28.000Z" itemprop="datePublished">一月 31, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题目：</strong></p>
+<blockquote>
+<p>你是一名合格的图书管理员，你必须能够在一排(10000以内)已按编号大小排好序的图书中，<br>快速地按照编号查找某本书所在的位置</p>
+</blockquote>
+<a id="more"></a>
+<p><strong>输入格式:</strong></p>
+<blockquote>
+<p>输入第一行是N，表示有N个元素，第二行是N个数,第三行是M表示要查找的数(第二行数字之间用空格隔开且最后一个数字不能有空格)</p>
+</blockquote>
+<p><strong>输出格式:</strong></p>
+<blockquote>
+<p>一个数，如果找到该数则输出位置否则输出-1</p>
+</blockquote>
+<p><strong>输入例子：</strong></p>
+<blockquote>
+<p>3<br>2 4 6<br>4</p>
+</blockquote>
+<p><strong>输出例子：</strong></p>
+<blockquote>
+<p>2</p>
+</blockquote>
+<p><strong>实现思路</strong></p>
+<blockquote>
+<p><strong>递归二分算法</strong></p>
+<p>将已经排好序的数列依次存入数组arr里面，设查找的数为M,用指针first表示该数列最左端的位置，用指针end表示该数列<br>最右端的位置,取得first和end的中间值mid指向该数列的最中间位置，<br>当end&gt;first时，比较M与arr[mid],有3种可能；</p>
+<ol>
+<li>若M=arr[mid],表示找到了，退出查找</li>
+<li>若M&lt;arr[mid],表示需要选择前半段进行查找，first不变，end改变为mid-1</li>
+<li>若M&gt;arr[mid],表示需要选择后半段进行查找，first变成mid+1,end不变<br>结束的情况只有两种，找到和未找到，以下代码</li>
+</ol>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">process.stdin.setEncoding(<span class="string">'utf8'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> count = <span class="number">0</span>;</div><div class="line"><span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line"><span class="keyword">var</span> arr = [];</div><div class="line"><span class="keyword">var</span> newArr = [];</div><div class="line"><span class="keyword">var</span> m = <span class="number">0</span></div><div class="line"></div><div class="line">process.stdin.on(<span class="string">'readable'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> chunk = process.stdin.read();</div><div class="line">  <span class="keyword">if</span> (chunk !== <span class="literal">null</span>) &#123;</div><div class="line">    arr.push(chunk)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(arr.length!=<span class="number">0</span>)&#123;</div><div class="line">  	count = <span class="built_in">parseInt</span>(arr[<span class="number">0</span>])</div><div class="line">	<span class="keyword">if</span>(i&gt;<span class="number">2</span>)&#123;</div><div class="line">  		process.stdin.emit(<span class="string">'end'</span>)</div><div class="line">	&#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  i++</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">search</span>(<span class="params">first,end</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> mid = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(end&gt;=first)&#123;</div><div class="line">		mid = <span class="built_in">parseInt</span>((first+end)/<span class="number">2</span>);</div><div class="line">		<span class="keyword">if</span>(m==newArr[mid<span class="number">-1</span>])&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">"总共"</span>+count+<span class="string">"个数"</span>);</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">"位置在:"</span>+mid);</div><div class="line">			<span class="keyword">return</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(m&lt;=newArr[mid<span class="number">-1</span>])&#123;</div><div class="line">			search(first,mid<span class="number">-1</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			search(mid+<span class="number">1</span>,end)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'-1'</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">rev</span>(<span class="params">newArr</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> first = <span class="number">1</span>;</div><div class="line">	<span class="keyword">var</span> end = newArr.length</div><div class="line">	search(first,end)</div><div class="line">&#125;</div><div class="line"></div><div class="line">process.stdin.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">	newArr = arr.slice(<span class="number">1</span>,arr.length<span class="number">-1</span>)</div><div class="line">	m = arr[arr.length<span class="number">-1</span>]</div><div class="line"></div><div class="line">	newArr = newArr.join(<span class="string">" "</span>).split(<span class="string">" "</span>).map(<span class="function"><span class="keyword">function</span>(<span class="params">index, elem</span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="built_in">parseInt</span>(index);</div><div class="line">	&#125;)</div><div class="line"></div><div class="line">	rev(newArr)</div><div class="line">  	process.stdout.write(<span class="string">'end'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><strong>示例</strong></p>
+<p><img src="../Algorithm-1/pic.png" alt="图片描述"></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/分治算法系列练习/">分治算法系列练习</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/01/31/Algorithm-1/" data-title="折半查找法" data-url="http://yoursite.com/2017/01/31/Algorithm-1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xxsxjh"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/01/Article-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          前端中经常出现的JS算法总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/31/Algorithm-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">魔法石的诱惑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav">无</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 RABBIT All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/#" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
