@@ -3,7 +3,7 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>归档: 2017 | RABBIT</title>
+  <title>RABBIT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -12,7 +12,7 @@
   <meta name="description" content="找不到对象就new一个呗">
 <meta property="og:type" content="website">
 <meta property="og:title" content="RABBIT">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="RABBIT">
 <meta property="og:description" content="找不到对象就new一个呗">
 <meta name="twitter:card" content="summary">
@@ -96,135 +96,75 @@
       <div id="content" class="outer">
         
           <section id="main">
-  <div class="archives-tags-wrap"><blockquote><span>嗯，目前共计11篇文章</span></blockquote>
-
-
-
-
-	<!-- 分页显示 -->
-	
-	
-		
-		
-		  
-		  
-		  <section class="archives-wrap">
-		    <div class="archive-year-wrap">
-		      <h1><a href="/archives/2017" class="archive-year">2017</a></h1>
-		    </div>
-		    <div class="archives">
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="/2017/02/26/Angular2Router/" class="archive-article-date">
-		  <time datetime="2017-02-26T07:06:55.000Z" itemprop="datePublished">2月 26, 2017</time>
-	  </a>
-      
+  
+    <article id="post-argument"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/02/26/Angular2Router/">ng2学习笔记之路由机制</a>
+      <a class="article-title" href="/2017/01/24/argument/">JS函数里的arguments</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="/2017/02/21/Angular2Study/" class="archive-article-date">
-		  <time datetime="2017-02-21T14:38:27.000Z" itemprop="datePublished">2月 21, 2017</time>
-	  </a>
+      </header> 
+    
+    <div class="article-meta">
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/02/21/Angular2Study/">ng2学前准备知识点</a>
-    </h1>
-  
+	Posted on <a href="/2017/01/24/argument/" class="article-date">
+	  <time datetime="2017-01-24T09:40:16.000Z" itemprop="datePublished">一月 24, 2017</time>
+	</a>
 
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="/2017/02/02/Dynamic-1/" class="archive-article-date">
-		  <time datetime="2017-02-02T12:12:02.000Z" itemprop="datePublished">2月 02, 2017</time>
-	  </a>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/02/02/Dynamic-1/">动态规划算法的思想及实现</a>
-    </h1>
-  
+        
 
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
+          
+            <div class="entry-summary" style="margin-left:0;">
+            arguments的面貌在javascript中所有的函数内部都包含了一个隐藏的变量叫arguments;它存放着所有传递到这个函数中的参数；那么我们打开实例看看arguments的输出形式
 
-      <a href="/2017/02/01/Article-1/" class="archive-article-date">
-		  <time datetime="2017-02-01T11:03:02.000Z" itemprop="datePublished">2月 01, 2017</time>
-	  </a>
+123(function fn()&#123;	console.log(arguments)&#125;)(1,2,3,4)
+
+结果好像是类似数组的形式打印在控制台，相信大多数人包括我看到这种输出就会认为arguments是一个数组，那么既然是数组就可以用数组的一些方法了吧，再看下一个例子；
+1234(function fn()&#123;	arguments.push(5)	console.log(arguments)&#125;)(1,2,3,4)
+
+结果报错了- -！；（在项目中我就是踩到...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/01/24/argument/#more">阅读全文</a>
+          </p>
+        </div>
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/02/01/Article-1/">前端中经常出现的JS算法总结</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="/2017/01/31/Algorithm-1/" class="archive-article-date">
-		  <time datetime="2017-01-30T19:12:28.000Z" itemprop="datePublished">1月 31, 2017</time>
-	  </a>
+    </div>
+    <footer class="entry-meta entry-footer">
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/01/31/Algorithm-1/">折半查找法</a>
-    </h1>
-  
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术/">技术</a>
 
-    </header>
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+      
+    </footer>
   </div>
+  
 </article>
-	
-	
-		</div></section>
-	
 
-	<!-- 页数指示器 -->
-	
-	  <nav id="page-nav">
-	    
-	    <span class="page-number current">1</span><a class="page-number" href="/archives/2017/page/2/">2</a><a class="page-number" href="/archives/2017/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/page/2/">下一页</a>
-	  </nav>
-	
+<!-- Table of Contents -->
+
+  
 
 
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 </section>
           <aside id="sidebar">

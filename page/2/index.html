@@ -97,6 +97,88 @@
         
           <section id="main">
   
+    <article id="post-Algorithm-2"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/31/Algorithm-2/">魔法石的诱惑</a>
+    </h1>
+  
+
+      </header> 
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/31/Algorithm-2/" class="article-date">
+	  <time datetime="2017-01-30T16:00:00.000Z" itemprop="datePublished">一月 31, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            题目：
+
+传说有一块高阶魔法石，它有一个特征那就是它的重量进行阶乘运算后末尾有几个0就拥有同等重量普通魔法石几倍的魔法力。例如 5! = 5 x 4 x 3 x 2 x 1 = 120而120包含一个0，所以拥有同等重量的普通魔法石1颗你的任务就是要找到最小的自然数N，使得N!在十进制下包含Q个零
+
+
+输入格式:
+
+一个数 Q (0 &lt;= Q &lt;= 10^8)
+
+输出格式:
+
+如果无解则输出”No solution”,否则输出N
+
+输入例子：
+
+2
+
+输出例子：
+
+10
+
+实现思路
+
+分治算法数学方法
+
+分治算法
+
+本题中，N!随着N的增加，0的个数也在增加，所以这是一个单调递增序列，用分治二分法很好解决那么如何判断N!有多少个零呢？参考公式$N/5 + N/(5^2) +...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/01/31/Algorithm-2/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/分治算法系列练习/">分治算法系列练习</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Exercise-3"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -335,73 +417,11 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-argument"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/24/argument/">JS函数里的arguments</a>
-    </h1>
-  
-
-      </header> 
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/24/argument/" class="article-date">
-	  <time datetime="2017-01-24T09:40:16.000Z" itemprop="datePublished">一月 24, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            arguments的面貌在javascript中所有的函数内部都包含了一个隐藏的变量叫arguments;它存放着所有传递到这个函数中的参数；那么我们打开实例看看arguments的输出形式
-
-123(function fn()&#123;	console.log(arguments)&#125;)(1,2,3,4)
-
-结果好像是类似数组的形式打印在控制台，相信大多数人包括我看到这种输出就会认为arguments是一个数组，那么既然是数组就可以用数组的一些方法了吧，再看下一个例子；
-1234(function fn()&#123;	arguments.push(5)	console.log(arguments)&#125;)(1,2,3,4)
-
-结果报错了- -！；（在项目中我就是踩到...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/01/24/argument/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
   </nav>
 
 </section>
@@ -495,6 +515,18 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/02/26/Angular2Router/">ng2学习笔记之路由机制</a></h6>
+              <span>二月 26, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/02/21/Angular2Study/">ng2学前准备知识点</a></h6>
               <span>二月 21, 2017</span>
             </div>
@@ -549,18 +581,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/01/26/Exercise-3/">网易有道2017内推编程题2道</a></h6>
-              <span>一月 26, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -570,7 +590,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/分治算法系列练习/">分治算法系列练习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">8</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/分治算法系列练习/">分治算法系列练习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -580,7 +600,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular2/">Angular2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular2/">Angular2</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -590,7 +610,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Angular2/" style="font-size: 10px;">Angular2</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/数学/" style="font-size: 10px;">数学</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/编程题/" style="font-size: 15px;">编程题</a>
+      <a href="/tags/Angular2/" style="font-size: 15px;">Angular2</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/数学/" style="font-size: 10px;">数学</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/编程题/" style="font-size: 15px;">编程题</a>
     </div>
   </div>
 
@@ -600,7 +620,7 @@
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
